@@ -1,0 +1,219 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\EscolaProg\\14581_employes_managment\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|c:\\escolaprog\\14581_employes_managment\\14581_employes_managment\\views\\employees\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|solutionrelative:14581_employes_managment\\views\\employees\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|c:\\escolaprog\\14581_employes_managment\\14581_employes_managment\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|solutionrelative:14581_employes_managment\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|c:\\escolaprog\\14581_employes_managment\\14581_employes_managment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|solutionrelative:14581_employes_managment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|c:\\escolaprog\\14581_employes_managment\\14581_employes_managment\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|solutionrelative:14581_employes_managment\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|c:\\escolaprog\\14581_employes_managment\\14581_employes_managment\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|solutionrelative:14581_employes_managment\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|c:\\escolaprog\\14581_employes_managment\\14581_employes_managment\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|solutionrelative:14581_employes_managment\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|c:\\escolaprog\\14581_employes_managment\\14581_employes_managment\\models\\useractivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|solutionrelative:14581_employes_managment\\models\\useractivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|c:\\escolaprog\\14581_employes_managment\\14581_employes_managment\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|solutionrelative:14581_employes_managment\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|c:\\escolaprog\\14581_employes_managment\\14581_employes_managment\\views\\employees\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|solutionrelative:14581_employes_managment\\views\\employees\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|c:\\escolaprog\\14581_employes_managment\\14581_employes_managment\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|solutionrelative:14581_employes_managment\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|c:\\escolaprog\\14581_employes_managment\\14581_employes_managment\\views\\employees\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|solutionrelative:14581_employes_managment\\views\\employees\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|c:\\escolaprog\\14581_employes_managment\\14581_employes_managment\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{27595E39-3791-4F41-BE11-4A87511D8F20}|14581_employes_managment\\14581_employes_managment.csproj|solutionrelative:14581_employes_managment\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Program.cs",
+              "RelativeDocumentMoniker": "14581_employes_managment\\Program.cs",
+              "ToolTip": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Program.cs",
+              "RelativeToolTip": "14581_employes_managment\\Program.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T22:03:24.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\appsettings.json",
+              "RelativeDocumentMoniker": "14581_employes_managment\\appsettings.json",
+              "ToolTip": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\appsettings.json",
+              "RelativeToolTip": "14581_employes_managment\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-12T22:03:23.386Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "14581_employes_managment\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "14581_employes_managment\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T21:56:10.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserActivity.cs",
+              "DocumentMoniker": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Models\\UserActivity.cs",
+              "RelativeDocumentMoniker": "14581_employes_managment\\Models\\UserActivity.cs",
+              "ToolTip": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Models\\UserActivity.cs",
+              "RelativeToolTip": "14581_employes_managment\\Models\\UserActivity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T21:56:01.293Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Views\\Employees\\Create.cshtml",
+              "RelativeDocumentMoniker": "14581_employes_managment\\Views\\Employees\\Create.cshtml",
+              "ToolTip": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Views\\Employees\\Create.cshtml",
+              "RelativeToolTip": "14581_employes_managment\\Views\\Employees\\Create.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T21:55:23.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Views\\Employees\\Delete.cshtml",
+              "RelativeDocumentMoniker": "14581_employes_managment\\Views\\Employees\\Delete.cshtml",
+              "ToolTip": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Views\\Employees\\Delete.cshtml",
+              "RelativeToolTip": "14581_employes_managment\\Views\\Employees\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T21:55:20.645Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "14581_employes_managment\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "14581_employes_managment\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-10T20:09:21.585Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "14581_employes_managment\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "14581_employes_managment\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAqwA8AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-10T18:11:36.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Views\\Employees\\Index.cshtml",
+              "RelativeDocumentMoniker": "14581_employes_managment\\Views\\Employees\\Index.cshtml",
+              "ToolTip": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Views\\Employees\\Index.cshtml",
+              "RelativeToolTip": "14581_employes_managment\\Views\\Employees\\Index.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEsAAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-09T23:32:16.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EmployeesController.cs",
+              "DocumentMoniker": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Controllers\\EmployeesController.cs",
+              "RelativeDocumentMoniker": "14581_employes_managment\\Controllers\\EmployeesController.cs",
+              "ToolTip": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Controllers\\EmployeesController.cs",
+              "RelativeToolTip": "14581_employes_managment\\Controllers\\EmployeesController.cs",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAYwG8AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-09T23:21:42.554Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "14581_employes_managment\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "14581_employes_managment\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-09T23:11:50.192Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "14581_employes_managment\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\EscolaProg\\14581_employes_managment\\14581_employes_managment\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "14581_employes_managment\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAwwLcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-09T19:19:50.047Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
