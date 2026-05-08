@@ -1,0 +1,111 @@
+@model IEnumerable<_14548_employes_managment.Models.LeaveApplication>
+
+@{
+    ViewData["Title"] = "Leave Applications";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Leave Applications</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active">Leave Applications</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">List of Leave Applications</h3>
+                        <div class="card-tools">
+                            <a href="@Url.Action("Create")" class="btn btn-primary btn-sm">
+                                <i class="fas fa-plus"></i> New Application
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table id="leaveTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Leave Type</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Days</th>
+                                    <th>Duration</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Employee?.FullName</td>
+                                        <td>@item.LeaveType?.Name</td>
+                                        <td>@item.StartDate.ToString("dd/MM/yyyy")</td>
+                                        <td>@item.EndDate.ToString("dd/MM/yyyy")</td>
+                                        <td>@item.NumberOfDays</td>
+                                        <td>@item.Duration?.Description</td>
+                                        <td>
+                                            @if (item.Status?.Description == "Pending")
+                                            {
+                                                <span class="badge badge-warning">@item.Status?.Description</span>
+                                            }
+                                            else if (item.Status?.Description == "Approved")
+                                            {
+                                                <span class="badge badge-success">@item.Status?.Description</span>
+                                            }
+                                            else if (item.Status?.Description == "Rejected")
+                                            {
+                                                <span class="badge badge-danger">@item.Status?.Description</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-secondary">@item.Status?.Description</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-info btn-sm" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-warning btn-sm" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger btn-sm" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            $("#leaveTable").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#leaveTable_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+}

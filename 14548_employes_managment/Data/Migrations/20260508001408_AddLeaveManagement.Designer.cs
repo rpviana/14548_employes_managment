@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _14548_employes_managment.Data;
 
@@ -11,9 +12,11 @@ using _14548_employes_managment.Data;
 namespace _14548_employes_managment.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260508001408_AddLeaveManagement")]
+    partial class AddLeaveManagement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -397,24 +400,6 @@ namespace _14548_employes_managment.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LeaveTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Paid annual leave",
-                            IsActive = true,
-                            MaxDaysPerYear = 30,
-                            Name = "Annual Leave"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Sick leave",
-                            IsActive = true,
-                            MaxDaysPerYear = 15,
-                            Name = "Sick Leave"
-                        });
                 });
 
             modelBuilder.Entity("_14548_employes_managment.Models.SystemCode", b =>
@@ -439,22 +424,6 @@ namespace _14548_employes_managment.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SystemCodes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Code = "LeaveApprovalStatus",
-                            Description = "Leave Approval Status",
-                            IsActive = true
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Code = "LeaveDuration",
-                            Description = "Leave Duration",
-                            IsActive = true
-                        });
                 });
 
             modelBuilder.Entity("_14548_employes_managment.Models.SystemCodeDetail", b =>
@@ -480,57 +449,6 @@ namespace _14548_employes_managment.Data.Migrations
                     b.HasIndex("SystemCodeId");
 
                     b.ToTable("SystemCodeDetails");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Pending",
-                            IsActive = true,
-                            SystemCodeId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Awaiting Approval",
-                            IsActive = true,
-                            SystemCodeId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Approved",
-                            IsActive = true,
-                            SystemCodeId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Rejected",
-                            IsActive = true,
-                            SystemCodeId = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Description = "Full Day",
-                            IsActive = true,
-                            SystemCodeId = 2
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Description = "First Half",
-                            IsActive = true,
-                            SystemCodeId = 2
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Description = "Second Half",
-                            IsActive = true,
-                            SystemCodeId = 2
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

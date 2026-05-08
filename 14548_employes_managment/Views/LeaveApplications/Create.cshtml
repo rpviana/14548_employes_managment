@@ -1,0 +1,178 @@
+@model _14548_employes_managment.Models.LeaveApplication
+
+@{
+    ViewData["Title"] = "Create Leave Application";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">New Leave Application</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">Leave Applications</a></li>
+                    <li class="breadcrumb-item active">Create</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Application Form</h3>
+                    </div>
+                    <form asp-action="Create" method="post">
+                        <div class="card-body">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="EmployeeId" class="control-label"></label>
+                                        <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId">
+                                            <option value="">-- Select Employee --</option>
+                                        </select>
+                                        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="LeaveTypeId" class="control-label"></label>
+                                        <select asp-for="LeaveTypeId" class="form-control" asp-items="ViewBag.LeaveTypeId">
+                                            <option value="">-- Select Leave Type --</option>
+                                        </select>
+                                        <span asp-validation-for="LeaveTypeId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="StartDate" class="control-label"></label>
+                                        <input asp-for="StartDate" type="date" class="form-control" />
+                                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="EndDate" class="control-label"></label>
+                                        <input asp-for="EndDate" type="date" class="form-control" />
+                                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="NumberOfDays" class="control-label"></label>
+                                        <input asp-for="NumberOfDays" type="number" class="form-control" readonly />
+                                        <span asp-validation-for="NumberOfDays" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="DurationId" class="control-label"></label>
+                                        <select asp-for="DurationId" class="form-control" asp-items="ViewBag.DurationId">
+                                            <option value="">-- Select Duration --</option>
+                                        </select>
+                                        <span asp-validation-for="DurationId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label"></label>
+                                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+
+                            <!-- Date Validation Error Message -->
+                            <div id="dateErrorAlert" class="alert alert-danger" role="alert" style="display: none;">
+                                End date must be equal to or later than start date.
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Save Application</button>
+                            <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        (function () {
+            const startDate = document.getElementById('StartDate');
+            const endDate = document.getElementById('EndDate');
+            const numberOfDays = document.getElementById('NumberOfDays');
+            const dateErrorAlert = document.getElementById('dateErrorAlert');
+            const form = document.querySelector('form');
+
+            function validateDates() {
+                if (!startDate.value || !endDate.value) {
+                    dateErrorAlert.style.display = 'none';
+                    return true;
+                }
+
+                const start = new Date(startDate.value);
+                const end = new Date(endDate.value);
+
+                if (end < start) {
+                    dateErrorAlert.style.display = 'block';
+                    numberOfDays.value = '';
+                    return false;
+                } else {
+                    dateErrorAlert.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function calculateDays() {
+                if (!startDate.value || !endDate.value) {
+                    numberOfDays.value = '';
+                    return;
+                }
+
+                const start = new Date(startDate.value);
+                const end = new Date(endDate.value);
+                const diffTime = end.getTime() - start.getTime();
+                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+                numberOfDays.value = diffDays > 0 ? diffDays : '';
+            }
+
+            function handleDateChange() {
+                validateDates();
+                calculateDays();
+            }
+
+            // Prevent form submission if dates are invalid
+            form.addEventListener('submit', function (e) {
+                if (!validateDates()) {
+                    e.preventDefault();
+                    dateErrorAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+
+            startDate.addEventListener('change', handleDateChange);
+            endDate.addEventListener('change', handleDateChange);
+            calculateDays();
+        })();
+    </script>
+}

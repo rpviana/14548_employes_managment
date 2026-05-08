@@ -16,6 +16,15 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+// Seed data
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ApplicationDbContext>();
+    // Run seeding logic to insert system codes and leave types if missing
+    _14548_employes_managment.Data.DbSeeder.SeedAsync(context).GetAwaiter().GetResult();
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

@@ -1,0 +1,122 @@
+@model _14548_employes_managment.Models.LeaveApplication
+
+@{
+    ViewData["Title"] = "Leave Application Details";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Application Details</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">Leave Applications</a></li>
+                    <li class="breadcrumb-item active">Details</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Application Information</h3>
+                    </div>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-3">
+                                <label asp-for="Employee.FullName"></label>
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Model.Employee?.FullName
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                <label asp-for="LeaveType.Name"></label>
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Model.LeaveType?.Name
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                <label asp-for="StartDate"></label>
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Model.StartDate.ToString("dd/MM/yyyy")
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                <label asp-for="EndDate"></label>
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Model.EndDate.ToString("dd/MM/yyyy")
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                <label asp-for="NumberOfDays"></label>
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Model.NumberOfDays days
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                <label asp-for="Duration.Description"></label>
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Model.Duration?.Description
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                <label asp-for="Status.Description"></label>
+                            </dt>
+                            <dd class="col-sm-9">
+                                @if (Model.Status?.Description == "Pending")
+                                {
+                                    <span class="badge badge-warning">@Model.Status?.Description</span>
+                                }
+                                else if (Model.Status?.Description == "Approved")
+                                {
+                                    <span class="badge badge-success">@Model.Status?.Description</span>
+                                }
+                                else if (Model.Status?.Description == "Rejected")
+                                {
+                                    <span class="badge badge-danger">@Model.Status?.Description</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-secondary">@Model.Status?.Description</span>
+                                }
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                <label asp-for="Description"></label>
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Model.Description
+                            </dd>
+
+                            <dt class="col-sm-3">
+                                <label>Created By</label>
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Model.CreatedById on @Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="card-footer">
+                        <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-warning">Edit</a>
+                        <a href="@Url.Action("Delete", new { id = Model.Id })" class="btn btn-danger">Delete</a>
+                        <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
