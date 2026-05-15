@@ -1,6 +1,6 @@
 {
     "chat.tools.terminal.autoApprove": {
-        "/^cd /workspaces/14548_employes_managment && mv 14581_employes_managment 14548_employes_managment && mv 14581_employes_managment\\.sln 14548_employes_managment\\.sln && cd 14548_employes_managment && mv 14581_employes_managment\\.csproj 14548_employes_managment\\.csproj && mv 14581_employes_managment\\.csproj\\.user 14548_employes_managment\\.csproj\\.user && ls -la$/": {
+        "/^cd /workspaces/14548_employes_managment && mv 14548_employes_managment 14548_employes_managment && mv 14548_employes_managment\\.sln 14548_employes_managment\\.sln && cd 14548_employes_managment && mv 14548_employes_managment\\.csproj 14548_employes_managment\\.csproj && mv 14548_employes_managment\\.csproj\\.user 14548_employes_managment\\.csproj\\.user && ls -la$/": {
             "approve": true,
             "matchCommandLine": true
         }
