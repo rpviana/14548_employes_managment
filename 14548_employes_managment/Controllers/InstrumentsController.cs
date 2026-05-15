@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,22 +11,22 @@ using _14548_employes_managment.Models;
 
 namespace _14548_employes_managment.Controllers
 {
-    public class EmployeesController : Controller
+    public class InstrumentsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public EmployeesController(ApplicationDbContext context)
+        public InstrumentsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // Lista os empregados que estao gravados na base de dados.
+        // Lista os Instumentos que estao gravados na base de dados.
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Employees.ToListAsync());
+            return View(await _context.Instruments.ToListAsync());
         }
 
-        // Mostra os detalhes de um empregado especifico.
+        // Mostra os detalhes de um instrumento especifico.
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,52 +34,38 @@ namespace _14548_employes_managment.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employees
+            var instrument = await _context.Instruments
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (employee == null)
+            if (instrument == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(instrument);
         }
 
-        // Abre o formulario para criar um empregado.
+        // Abre o formulario para criar um instrumento.
         public IActionResult Create()
         {
             return View();
         }
 
-        // Recebe o formulario e grava o novo empregado.
+        // Recebe o formulario e grava o novo instrumento.
         // Aqui só se ligam os campos que o formulario realmente envia.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Employee employee)
+        public async Task<IActionResult> Create(Instrument instrument)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                // Guarda quem criou o registo quando existe utilizador autenticado.
-                employee.CreatedById = User.Identity.Name;
-                employee.ModifiedById = User.Identity.Name;
-            }
-            else
-            {
-                // Se nao houver login, fica assinalado como anonimato.
-                employee.CreatedById = "Anonymous";
-                employee.ModifiedById = "Anonymous";
-            }
-            employee.CreatedAt = DateTime.Now;
-            employee.ModifiedAt = DateTime.Now;
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
+                _context.Add(instrument);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(instrument);
         }
 
-        // Abre o formulario de edicao com os dados do empregado.
+        // Abre o formulario de edicao com os dados do instrumento.
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,20 +73,20 @@ namespace _14548_employes_managment.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employees.FindAsync(id);
-            if (employee == null)
+            var instrument = await _context.Instruments.FindAsync(id);
+            if (instrument == null)
             {
                 return NotFound();
             }
-            return View(employee);
+            return View(instrument);
         }
 
         // Recebe a edicao e actualiza o registo.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Employee employee)
+        public async Task<IActionResult> Edit(int id, Instrument instrument)
         {
-            if (id != employee.Id)
+            if (id != instrument.Id)
             {
                 return NotFound();
             }
@@ -108,23 +95,12 @@ namespace _14548_employes_managment.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
-                    // Estes campos ficam preservados para nao perder o historico original.
-                    _context.Entry(employee).Property(e => e.CreatedAt).IsModified = false;
-                    _context.Entry(employee).Property(e => e.CreatedById).IsModified = false;
-                    employee.ModifiedAt = DateTime.Now;
-                    if (User.Identity.IsAuthenticated)
-                    {
-                        employee.ModifiedById = User.Identity.Name;
-                    } else
-                    {
-                        employee.ModifiedById = "Anonymous";
-                    }
+                    _context.Update(instrument);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.Id))
+                    if (!InstrumentExists(instrument.Id))
                     {
                         return NotFound();
                     }
@@ -135,7 +111,7 @@ namespace _14548_employes_managment.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(instrument);
         }
 
         // Mostra a confirmacao antes de apagar.
@@ -146,14 +122,14 @@ namespace _14548_employes_managment.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employees
+            var instrument = await _context.Instruments
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (employee == null)
+            if (instrument == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(instrument);
         }
 
         // Apaga o registo depois da confirmacao.
@@ -161,20 +137,20 @@ namespace _14548_employes_managment.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employee = await _context.Employees.FindAsync(id);
-            if (employee != null)
+            var instrument = await _context.Instruments.FindAsync(id);
+            if (instrument != null)
             {
-                _context.Employees.Remove(employee);
+                _context.Instruments.Remove(instrument);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        // Confirma se o empregado ainda existe na base.
-        private bool EmployeeExists(int id)
+        // Confirma se o instrumento ainda existe na base.
+        private bool InstrumentExists(int id)
         {
-            return _context.Employees.Any(e => e.Id == id);
+            return _context.Instruments.Any(i => i.Id == id);
         }
     }
 }

@@ -21,7 +21,7 @@ body {
   margin-bottom: 60px;
 }
 
-/* Mobile Responsive Improvements */
+/* Regras para melhorar a leitura em ecras pequenos. */
 @media (max-width: 576px) {
   .content-header {
     padding: 0.5rem 0;
@@ -101,7 +101,7 @@ body {
     font-size: 0.75em;
   }
 
-  /* Improve input sizing on mobile */
+  /* Evita zoom no iPhone quando se toca nos inputs. */
   input[type="text"],
   input[type="email"],
   input[type="tel"],
@@ -114,13 +114,13 @@ body {
     box-sizing: border-box;
   }
 
-  /* Better spacing for form groups */
+  /* Distingue melhor cada bloco do formulario no telemovel. */
   .form-group label {
     margin-bottom: 0.25rem;
     font-size: 0.875rem;
   }
 
-  /* Ensure buttons are touch-friendly */
+  /* Garante botoes mais faceis de tocar. */
   .btn {
     min-height: 44px;
     padding: 0.375rem 0.75rem;
@@ -132,24 +132,24 @@ body {
   }
 }
 
-/* Tablet and up adjustments */
+/* Ajustes leves para tablets. */
 @media (min-width: 577px) and (max-width: 768px) {
   .table {
     font-size: 0.9375rem;
   }
 }
 
-/* General improvements */
+/* Pequenas melhorias gerais para a interface. */
 .table-responsive {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Prevent layout shift on scroll */
+/* Mantem a barra de scroll sempre visivel. */
 html {
   overflow-y: scroll;
 }
 
-/* Better focus states for accessibility */
+/* Realca o campo ativo para ajudar na navegacao por teclado. */
 .form-control:focus,
 select:focus,
 textarea:focus {
@@ -161,13 +161,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
-/* Ensure images are responsive */
+/* Faz as imagens acompanharem a largura disponivel. */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Improve dropdown and select styling */
+/* Evita cortes visuais em selects e caixas de texto. */
 select,
 textarea {
   width: 100%;

@@ -4,6 +4,7 @@
     ViewData["Title"] = "Leave Applications";
 }
 
+<!-- Cabecalho da lista de pedidos -->
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -20,6 +21,7 @@
     </div>
 </div>
 
+<!-- Tabela com os pedidos de ausencia -->
 <div class="content">
     <div class="container-fluid px-3 px-sm-0">
         <div class="row">
@@ -58,6 +60,7 @@
                                         <td class="text-center">@item.NumberOfDays</td>
                                         <td>@item.Duration?.Description</td>
                                         <td>
+                                            <!-- O badge muda de cor conforme o estado do pedido -->
                                             @if (item.Status?.Description == "Pending")
                                             {
                                                 <span class="badge badge-warning">@item.Status?.Description</span>
@@ -101,6 +104,7 @@
 
 @section Scripts {
     <script>
+        // Ativa a grelha com pesquisa, exportacao e colunas visiveis.
         $(function () {
             $("#leaveTable").DataTable({
                 "responsive": true,

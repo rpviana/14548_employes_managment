@@ -1,7 +1,7 @@
-﻿@model IEnumerable<_14548_employes_managment.Models.Employee>
+@model IEnumerable<_14548_employes_managment.Models.Instrument>
 
 @{
-    ViewData["Title"] = "Employees";
+    ViewData["Title"] = "Instruments";
 }
 
 <!-- Cabecalho da pagina da lista -->
@@ -9,12 +9,12 @@
     <div class="container-fluid px-3 px-sm-0">
         <div class="row mb-2">
             <div class="col-12 col-sm-6">
-                <h1 class="m-0">Employees</h1>
+                <h1 class="m-0">Instruments</h1>
             </div>
             <div class="col-12 col-sm-6">
                 <ol class="breadcrumb float-sm-right float-left float-sm-right">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">Employees</li>
+                    <li class="breadcrumb-item active">Instruments</li>
                 </ol>
             </div>
         </div>
@@ -28,10 +28,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
-                        <h3 class="card-title mb-2 mb-sm-0">List of Employees</h3>
+                        <h3 class="card-title mb-2 mb-sm-0">List of Instruments</h3>
                         <div class="card-tools">
                             <a asp-action="Create" class="btn btn-primary btn-sm">
-                                <i class="fas fa-plus"></i> <span class="d-none d-sm-inline">Add New Employee</span>
+                                <i class="fas fa-plus"></i> <span class="d-none d-sm-inline">Add New Instrument</span>
                             </a>
                         </div>
                     </div>
@@ -39,27 +39,20 @@
                         <table id="example1" class="table table-bordered table-striped table-sm">
                             <thead>
                                 <tr>
-                                    <th style="min-width: 80px;">EmpNo</th>
-                                    <th style="min-width: 90px;">First Name</th>
-                                    <th style="min-width: 90px;">Last Name</th>
-                                    <th style="min-width: 110px;">Email</th>
-                                    <th style="min-width: 100px;">Phone</th>
-                                    <th style="min-width: 120px;">Country</th>
-                                    <th style="min-width: 100px;">Function</th>
-
+                                    <th style="min-width: 80px;">Id</th>
+                                    <th style="min-width: 90px;">Instrument Type</th>
+                                    <th style="min-width: 90px;">Instrument Name</th>
+                                    <th style="min-width: 110px;">Use Strings</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.EmpNo)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.LastName)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.EmailAddress)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Country)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Function)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.InstrumentType)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.InstrumentName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.UseStrings)</td>
                                         <td>
                                             <div class="btn-group btn-group-sm" role="group">
                                                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info" title="View">

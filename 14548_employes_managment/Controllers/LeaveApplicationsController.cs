@@ -14,7 +14,7 @@ namespace _14548_employes_managment.Controllers
             _context = context;
         }
 
-        // GET: LeaveApplications
+        // Lista os pedidos de ausencia com os dados relacionados.
         public async Task<IActionResult> Index()
         {
             var leaveApplications = await _context.LeaveApplications
@@ -27,7 +27,7 @@ namespace _14548_employes_managment.Controllers
             return View(leaveApplications);
         }
 
-        // GET: LeaveApplications/Details/5
+        // Mostra os detalhes de um pedido especifico.
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -46,17 +46,17 @@ namespace _14548_employes_managment.Controllers
             return View(leaveApplication);
         }
 
-        // GET: LeaveApplications/Create
+        // Abre o formulario para criar um pedido de ausencia.
         public async Task<IActionResult> Create()
         {
-            // Carregar dados para os dropdowns
+            // Carrega os dados para os campos de escolha.
             ViewData["EmployeeId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(
                 await _context.Employees.ToListAsync(), "Id", "FullName");
 
             ViewData["LeaveTypeId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(
                 await _context.LeaveTypes.Where(l => l.IsActive).ToListAsync(), "Id", "Name");
 
-            // Filtrar apenas as durações (LeaveDuration)
+            // Usa apenas as duracoes ligadas ao codigo LeaveDuration.
             var durationCodes = await _context.SystemCodeDetails
                 .Include(x => x.SystemCode)
                 .Where(y => y.SystemCode.Code == "LeaveDuration" && y.IsActive)
@@ -68,14 +68,14 @@ namespace _14548_employes_managment.Controllers
             return View();
         }
 
-        // POST: LeaveApplications/Create
+        // Recebe o formulario e grava o pedido.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EmployeeId,StartDate,EndDate,DurationId,LeaveTypeId,Description")] LeaveApplication leaveApplication)
         {
             try
             {
-                // Validar que a data de fim é igual ou posterior à data de início
+                // Garante que a data final nao fica antes da data inicial.
                 if (leaveApplication.EndDate < leaveApplication.StartDate)
                 {
                     ModelState.AddModelError("EndDate", "End date must be equal to or later than start date.");
@@ -83,7 +83,7 @@ namespace _14548_employes_managment.Controllers
 
                 ApplyCalculatedDays(leaveApplication);
 
-                // Log validation errors
+                // Regista os erros de validacao no debug para facilitar o teste.
                 if (!ModelState.IsValid)
                 {
                     var errors = ModelState.Values.SelectMany(v => v.Errors);
@@ -95,7 +95,7 @@ namespace _14548_employes_managment.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    // Buscar o status "Pending" automaticamente
+                    // Procura automaticamente o estado Pending.
                     var pendingStatus = await _context.SystemCodeDetails
                         .Include(x => x.SystemCode)
                         .FirstOrDefaultAsync(y => y.Description == "Pending" && y.SystemCode.Code == "LeaveApprovalStatus");
@@ -108,7 +108,7 @@ namespace _14548_employes_managment.Controllers
 
                     leaveApplication.StatusId = pendingStatus.Id;
 
-                    // Atribuir dados de auditoria
+                    // Dados de auditoria enquanto a autenticacao final nao esta ligada.
                     leaveApplication.CreatedById = "MacroCode"; // TODO: Usar User.Identity.Name quando autenticação estiver pronta
                     leaveApplication.CreatedAt = DateTime.Now;
 
@@ -126,7 +126,7 @@ namespace _14548_employes_managment.Controllers
                 ModelState.AddModelError(string.Empty, $"An error occurred: {ex.Message}");
             }
 
-            // Recarregar dados se houver erro
+            // Recarrega os campos de escolha se algo correr mal.
             ViewData["EmployeeId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(
                 await _context.Employees.ToListAsync(), "Id", "FullName", leaveApplication.EmployeeId);
 
@@ -144,7 +144,7 @@ namespace _14548_employes_managment.Controllers
             return View(leaveApplication);
         }
 
-        // GET: LeaveApplications/Edit/5
+        // Abre o formulario de edicao com os dados atuais.
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -154,7 +154,7 @@ namespace _14548_employes_managment.Controllers
             if (leaveApplication == null)
                 return NotFound();
 
-            // Carregar dados para os dropdowns
+            // Carrega os dados para os campos de escolha.
             ViewData["EmployeeId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(
                 await _context.Employees.ToListAsync(), "Id", "FullName", leaveApplication.EmployeeId);
 
@@ -172,7 +172,7 @@ namespace _14548_employes_managment.Controllers
             return View(leaveApplication);
         }
 
-        // POST: LeaveApplications/Edit/5
+        // Recebe a edicao e atualiza o pedido.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,EmployeeId,StartDate,EndDate,DurationId,LeaveTypeId,Description")] LeaveApplication leaveApplication)
@@ -180,7 +180,7 @@ namespace _14548_employes_managment.Controllers
             if (id != leaveApplication.Id)
                 return NotFound();
 
-            // Validar que a data de fim é igual ou posterior à data de início
+            // Garante que a data final nao fica antes da data inicial.
             if (leaveApplication.EndDate < leaveApplication.StartDate)
             {
                 ModelState.AddModelError("EndDate", "End date must be equal to or later than start date.");
@@ -220,7 +220,7 @@ namespace _14548_employes_managment.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            // Recarregar dados se houver erro
+            // Recarrega os campos de escolha se houver erro.
             ViewData["EmployeeId"] = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(
                 await _context.Employees.ToListAsync(), "Id", "FullName", leaveApplication.EmployeeId);
 
@@ -238,7 +238,7 @@ namespace _14548_employes_managment.Controllers
             return View(leaveApplication);
         }
 
-        // GET: LeaveApplications/Delete/5
+        // Mostra a confirmacao antes de apagar.
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -256,7 +256,7 @@ namespace _14548_employes_managment.Controllers
             return View(leaveApplication);
         }
 
-        // POST: LeaveApplications/Delete/5
+        // Apaga o pedido depois da confirmacao.
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -271,11 +271,13 @@ namespace _14548_employes_managment.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // Confirma se o pedido ainda existe.
         private bool LeaveApplicationExists(int id)
         {
             return _context.LeaveApplications.Any(e => e.Id == id);
         }
 
+        // Calcula os dias da ausencia com base nas datas escolhidas.
         private void ApplyCalculatedDays(LeaveApplication leaveApplication)
         {
             if (leaveApplication.StartDate == default || leaveApplication.EndDate == default)

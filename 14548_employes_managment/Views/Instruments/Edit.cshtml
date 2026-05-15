@@ -1,0 +1,54 @@
+@model _14548_employes_managment.Models.Instrument
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!-- Formulario de edicao do instrumento -->
+<h1>Edit</h1>
+
+<h4>Instrument</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <!-- Mantem o Id escondido para atualizar o registo certo. -->
+            <input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="InstrumentType" class="control-label"></label>
+                        <input asp-for="InstrumentType" class="form-control" />
+                        <span asp-validation-for="InstrumentType" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="InstrumentName" class="control-label"></label>
+                        <input asp-for="InstrumentName" class="form-control" />
+                        <span asp-validation-for="InstrumentName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="UseStrings" class="control-label"></label>
+                        <input asp-for="UseStrings" class="form-control" />
+                        <span asp-validation-for="UseStrings" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,86 @@
+@model _14548_employes_managment.Models.Instrument
+
+@{
+    ViewData["Title"] = "Create Instument";
+}
+
+<!-- Cabecalho do formulario -->
+<div class="content-header">
+    <div class="container-fluid px-3 px-sm-0">
+        <div class="row mb-2">
+            <div class="col-12 col-sm-6">
+                <h1 class="m-0">New Instrument</h1>
+            </div>
+            <div class="col-12 col-sm-6">
+                <ol class="breadcrumb float-sm-right float-left float-sm-right">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index")">Instruments</a></li>
+                    <li class="breadcrumb-item active">Create</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Formulario para criar um instrumento -->
+<div class="content">
+    <div class="container-fluid px-3 px-sm-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Instrument Form</h3>
+                    </div>
+                    <form asp-action="Create" method="post" id="instrumentForm">
+                        <div class="card-body">
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="InstrumentType" class="control-label">Instrument Type <span class="text-danger">*</span></label>
+                                        <input asp-for="InstrumentType" class="form-control" required />
+                                        <span asp-validation-for="InstrumentType" class="text-danger small"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="InstrumentName" class="control-label"></label>
+                                        <input asp-for="InstrumentName" class="form-control" />
+                                        <span asp-validation-for="InstrumentName" class="text-danger small"></span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="UseStrings" class="control-label">Use Strings <span class="text-danger">*</span></label>
+                                        <input asp-for="UseStrings" class="form-control" required />
+                                        <span asp-validation-for="UseStrings" class="text-danger small"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <!-- Aqui ficam os botoes de gravar e cancelar -->
+                            <button type="submit" class="btn btn-primary btn-block btn-sm">
+                                <i class="fas fa-save"></i> Create Instrument
+                            </button>
+                            <a href="@Url.Action("Index")" class="btn btn-secondary btn-block btn-sm mt-2">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

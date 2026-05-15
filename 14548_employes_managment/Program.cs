@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Regista os servicos principais da app.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -16,16 +16,16 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Seed data
+// Garante que os dados base ficam carregados antes de a app atender pedidos.
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<ApplicationDbContext>();
-    // Run seeding logic to insert system codes and leave types if missing
+    // Executa o seed de codigos e tipos de ausencia, se ainda nao existirem.
     _14548_employes_managment.Data.DbSeeder.SeedAsync(context).GetAwaiter().GetResult();
 }
 
-// Configure the HTTP request pipeline.
+// Configura o pipeline HTTP.
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
@@ -33,7 +33,7 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    // Em producao, obriga o navegador a usar HTTPS durante 30 dias.
     app.UseHsts();
 }
 

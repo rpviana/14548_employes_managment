@@ -4,6 +4,7 @@
     ViewData["Title"] = "Create Employee";
 }
 
+<!-- Cabecalho do formulario -->
 <div class="content-header">
     <div class="container-fluid px-3 px-sm-0">
         <div class="row mb-2">
@@ -21,6 +22,7 @@
     </div>
 </div>
 
+<!-- Formulario para criar um empregado -->
 <div class="content">
     <div class="container-fluid px-3 px-sm-0">
         <div class="row">
@@ -35,14 +37,14 @@
                             <div class="row">
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label asp-for="EmpNo" class="control-label"><span class="text-danger">*</span></label>
+                                        <label asp-for="EmpNo" class="control-label">Employee No <span class="text-danger">*</span></label>
                                         <input asp-for="EmpNo" class="form-control" required />
                                         <span asp-validation-for="EmpNo" class="text-danger small"></span>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label asp-for="FirstName" class="control-label"><span class="text-danger">*</span></label>
+                                        <label asp-for="FirstName" class="control-label">First Name <span class="text-danger">*</span></label>
                                         <input asp-for="FirstName" class="form-control" required />
                                         <span asp-validation-for="FirstName" class="text-danger small"></span>
                                     </div>
@@ -59,7 +61,7 @@
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label asp-for="LastName" class="control-label"><span class="text-danger">*</span></label>
+                                        <label asp-for="LastName" class="control-label">Last Name <span class="text-danger">*</span></label>
                                         <input asp-for="LastName" class="form-control" required />
                                         <span asp-validation-for="LastName" class="text-danger small"></span>
                                     </div>
@@ -125,10 +127,23 @@
                                         <span asp-validation-for="Designation" class="text-danger small"></span>
                                     </div>
                                 </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="Function" class="control-label"></label>
+                                        <select asp-for="Function" class="form-control">
+                                            <option value="">-- Select Function --</option>
+                                            <option value="Administration">Administration</option>
+                                            <option value="Engineer">Engineer</option>
+                                            <option value="Worker">Worker</option>
+                                        </select>
+                                        <span asp-validation-for="Function" class="text-danger small"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="card-footer">
+                            <!-- Aqui ficam os botoes de gravar e cancelar -->
                             <button type="submit" class="btn btn-primary btn-block btn-sm">
                                 <i class="fas fa-save"></i> Create Employee
                             </button>

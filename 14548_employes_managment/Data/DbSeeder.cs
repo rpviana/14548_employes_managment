@@ -7,10 +7,10 @@ namespace _14548_employes_managment.Data
     {
         public static async Task SeedAsync(ApplicationDbContext context)
         {
-            // Ensure database available
+            // Garante que a base existe antes de tentar inserir dados.
             await context.Database.EnsureCreatedAsync();
 
-            // SystemCodes
+            // Garante os codigos base usados pela aplicacao.
             if (!await context.SystemCodes.AnyAsync(sc => sc.Code == "LeaveApprovalStatus"))
             {
                 var sc = new SystemCode { Code = "LeaveApprovalStatus", Description = "Leave Approval Status", IsActive = true };
@@ -38,7 +38,7 @@ namespace _14548_employes_managment.Data
                 await context.SaveChangesAsync();
             }
 
-            // LeaveTypes
+            // Tipos de ausencia iniciais.
             if (!await context.LeaveTypes.AnyAsync())
             {
                 context.LeaveTypes.AddRange(
@@ -48,14 +48,14 @@ namespace _14548_employes_managment.Data
                 await context.SaveChangesAsync();
             }
 
-            // Ensure at least one Employee exists (optional)
+            // Deixa um empregado de exemplo para facilitar testes locais.
             if (!await context.Employees.AnyAsync())
             {
-                context.Employees.Add(new Employee
+                _ = context.Employees.Add(new Employee
                 {
                     EmpNo = "EMP001",
                     FirstName = "João",
-                    MiddleName = "",
+                    MiddleName = string.Empty,
                     LastName = "Silva",
                     PhoneNumber = "+351912345678",
                     EmailAddress = "joao.silva@example.com",

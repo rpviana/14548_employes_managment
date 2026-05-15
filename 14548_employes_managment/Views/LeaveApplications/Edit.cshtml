@@ -4,6 +4,7 @@
     ViewData["Title"] = "Edit Leave Application";
 }
 
+<!-- Formulario de edicao do pedido de ausencia -->
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -132,7 +133,7 @@
             const submitBtn = document.getElementById('submitBtn');
 
             function validateDates() {
-                // Clear previous error
+                // Limpa o aviso anterior antes de validar de novo.
                 dateErrorAlert.style.display = 'none';
 
                 if (!startDate.value || !endDate.value) {
@@ -170,9 +171,9 @@
                 validateDates();
             }
 
-            // Prevent form submission if dates are invalid
+            // Impede o envio se as datas estiverem erradas.
             form.addEventListener('submit', function (e) {
-                // Always recalculate before submit
+                // Recalcula sempre antes de submeter.
                 calculateDays();
                 
                 if (!validateDates()) {
@@ -182,19 +183,19 @@
                     return false;
                 }
                 
-                // Ensure NumberOfDays has a valid value before submit
+                // Garante que o total de dias fica coerente.
                 if (!numberOfDays.value || numberOfDays.value === '' || numberOfDays.value === '0') {
                     calculateDays();
                 }
             });
 
-            // Add event listeners for date changes
+            // Reage quando o utilizador altera as datas.
             startDate.addEventListener('change', handleDateChange);
             endDate.addEventListener('change', handleDateChange);
             startDate.addEventListener('input', handleDateChange);
             endDate.addEventListener('input', handleDateChange);
 
-            // Initial calculation
+            // Calcula logo ao abrir a pagina.
             calculateDays();
         })();
     </script>

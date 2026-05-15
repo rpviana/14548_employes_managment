@@ -8,7 +8,7 @@ namespace _14548_employes_managment.Data
     {
         public static void Initialize(ApplicationDbContext context)
         {
-            // Checar se já existem dados
+            // Para se a base ja tiver codigos, nao duplica nada.
             if (context.SystemCodes.Any())
                 return;
 
@@ -21,13 +21,13 @@ namespace _14548_employes_managment.Data
             context.SystemCodes.AddRange(systemCodes);
             context.SaveChanges();
 
-            // Buscar os SystemCodes que acabamos de criar
+            // Recupera os codigos que foram criados acima.
             var leaveApprovalStatusCode = context.SystemCodes.FirstOrDefault(x => x.Code == "LeaveApprovalStatus");
             var leaveDurationCode = context.SystemCodes.FirstOrDefault(x => x.Code == "LeaveDuration");
 
             var systemCodeDetails = new List<SystemCodeDetail>();
 
-            // Adicionar detalhes para LeaveApprovalStatus
+            // Estados do fluxo de aprovacao.
             if (leaveApprovalStatusCode != null)
             {
                 systemCodeDetails.AddRange(new[]
@@ -39,7 +39,7 @@ namespace _14548_employes_managment.Data
                 });
             }
 
-            // Adicionar detalhes para LeaveDuration
+            // Opcoes de duracao do pedido.
             if (leaveDurationCode != null)
             {
                 systemCodeDetails.AddRange(new[]
@@ -53,7 +53,7 @@ namespace _14548_employes_managment.Data
             context.SystemCodeDetails.AddRange(systemCodeDetails);
             context.SaveChanges();
 
-            // Adicionar tipos de licença
+            // Tipos de ausencia usados na app.
             var leaveTypes = new List<LeaveType>
             {
                 new LeaveType { Name = "Annual Leave", Description = "Yearly vacation days", MaxDaysPerYear = 20, IsActive = true },

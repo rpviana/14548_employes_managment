@@ -1,4 +1,2 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿// Ficheiro reservado para scripts da app, fora dos plugins do template.
+// Aqui entram comportamentos pequenos que nao compensam criar num bundle separado.
