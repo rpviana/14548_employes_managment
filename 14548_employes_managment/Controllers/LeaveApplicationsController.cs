@@ -71,35 +71,59 @@ namespace _14548_employes_managment.Controllers
         // POST: LeaveApplications/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId,StartDate,EndDate,NumberOfDays,DurationId,LeaveTypeId,Description")] LeaveApplication leaveApplication)
+        public async Task<IActionResult> Create([Bind("EmployeeId,StartDate,EndDate,DurationId,LeaveTypeId,Description")] LeaveApplication leaveApplication)
         {
-            // Validar que a data de fim é igual ou posterior à data de início
-            if (leaveApplication.EndDate < leaveApplication.StartDate)
+            try
             {
-                ModelState.AddModelError("EndDate", "End date must be equal to or later than start date.");
-            }
-
-            ApplyCalculatedDays(leaveApplication);
-
-            if (ModelState.IsValid)
-            {
-                // Buscar o status "Pending" automaticamente
-                var pendingStatus = await _context.SystemCodeDetails
-                    .Include(x => x.SystemCode)
-                    .FirstOrDefaultAsync(y => y.Description == "Pending" && y.SystemCode.Code == "LeaveApprovalStatus");
-
-                if (pendingStatus != null)
+                // Validar que a data de fim é igual ou posterior à data de início
+                if (leaveApplication.EndDate < leaveApplication.StartDate)
                 {
-                    leaveApplication.StatusId = pendingStatus.Id;
+                    ModelState.AddModelError("EndDate", "End date must be equal to or later than start date.");
                 }
 
-                // Atribuir dados de auditoria
-                leaveApplication.CreatedById = "MacroCode"; // TODO: Usar User.Identity.Name quando autenticação estiver pronta
-                leaveApplication.CreatedAt = DateTime.Now;
+                ApplyCalculatedDays(leaveApplication);
 
-                _context.Add(leaveApplication);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Log validation errors
+                if (!ModelState.IsValid)
+                {
+                    var errors = ModelState.Values.SelectMany(v => v.Errors);
+                    foreach (var error in errors)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"ModelState Error: {error.ErrorMessage}");
+                    }
+                }
+
+                if (ModelState.IsValid)
+                {
+                    // Buscar o status "Pending" automaticamente
+                    var pendingStatus = await _context.SystemCodeDetails
+                        .Include(x => x.SystemCode)
+                        .FirstOrDefaultAsync(y => y.Description == "Pending" && y.SystemCode.Code == "LeaveApprovalStatus");
+
+                    if (pendingStatus == null)
+                    {
+                        ModelState.AddModelError(string.Empty, "System error: Cannot find 'Pending' status. Please contact administrator.");
+                        throw new InvalidOperationException("Pending status not found in SystemCodeDetails");
+                    }
+
+                    leaveApplication.StatusId = pendingStatus.Id;
+
+                    // Atribuir dados de auditoria
+                    leaveApplication.CreatedById = "MacroCode"; // TODO: Usar User.Identity.Name quando autenticação estiver pronta
+                    leaveApplication.CreatedAt = DateTime.Now;
+
+                    _context.Add(leaveApplication);
+                    await _context.SaveChangesAsync();
+                    
+                    System.Diagnostics.Debug.WriteLine($"Leave application created successfully with ID: {leaveApplication.Id}");
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Exception in Create: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"StackTrace: {ex.StackTrace}");
+                ModelState.AddModelError(string.Empty, $"An error occurred: {ex.Message}");
             }
 
             // Recarregar dados se houver erro
@@ -151,7 +175,7 @@ namespace _14548_employes_managment.Controllers
         // POST: LeaveApplications/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,EmployeeId,StartDate,EndDate,NumberOfDays,DurationId,LeaveTypeId,Description")] LeaveApplication leaveApplication)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,EmployeeId,StartDate,EndDate,DurationId,LeaveTypeId,Description")] LeaveApplication leaveApplication)
         {
             if (id != leaveApplication.Id)
                 return NotFound();

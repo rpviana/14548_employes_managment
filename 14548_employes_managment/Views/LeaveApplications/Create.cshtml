@@ -22,89 +22,102 @@
 </div>
 
 <div class="content">
-    <div class="container-fluid">
+    <div class="container-fluid px-3 px-sm-0">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-12">
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Application Form</h3>
                     </div>
-                    <form asp-action="Create" method="post">
+                    <form asp-action="Create" method="post" id="leaveApplicationForm">
                         <div class="card-body">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
+                                <strong>Success!</strong> Leave application saved successfully!
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label asp-for="EmployeeId" class="control-label"></label>
-                                        <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId">
+                                        <label asp-for="EmployeeId" class="control-label"><span class="text-danger">*</span></label>
+                                        <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId" required>
                                             <option value="">-- Select Employee --</option>
                                         </select>
-                                        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                                        <span asp-validation-for="EmployeeId" class="text-danger small"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label asp-for="LeaveTypeId" class="control-label"></label>
-                                        <select asp-for="LeaveTypeId" class="form-control" asp-items="ViewBag.LeaveTypeId">
+                                        <label asp-for="LeaveTypeId" class="control-label"><span class="text-danger">*</span></label>
+                                        <select asp-for="LeaveTypeId" class="form-control" asp-items="ViewBag.LeaveTypeId" required>
                                             <option value="">-- Select Leave Type --</option>
                                         </select>
-                                        <span asp-validation-for="LeaveTypeId" class="text-danger"></span>
+                                        <span asp-validation-for="LeaveTypeId" class="text-danger small"></span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label asp-for="StartDate" class="control-label"></label>
-                                        <input asp-for="StartDate" type="date" class="form-control" />
-                                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                                        <label asp-for="StartDate" class="control-label"><span class="text-danger">*</span></label>
+                                        <input asp-for="StartDate" type="date" class="form-control" required />
+                                        <span asp-validation-for="StartDate" class="text-danger small"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label asp-for="EndDate" class="control-label"></label>
-                                        <input asp-for="EndDate" type="date" class="form-control" />
-                                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                                        <label asp-for="EndDate" class="control-label"><span class="text-danger">*</span></label>
+                                        <input asp-for="EndDate" type="date" class="form-control" required />
+                                        <span asp-validation-for="EndDate" class="text-danger small"></span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label asp-for="NumberOfDays" class="control-label"></label>
+                                        <label asp-for="NumberOfDays" class="control-label"><span class="text-danger">*</span></label>
                                         <input asp-for="NumberOfDays" type="number" class="form-control" readonly />
-                                        <span asp-validation-for="NumberOfDays" class="text-danger"></span>
+                                        <span asp-validation-for="NumberOfDays" class="text-danger small"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label asp-for="DurationId" class="control-label"></label>
-                                        <select asp-for="DurationId" class="form-control" asp-items="ViewBag.DurationId">
+                                        <label asp-for="DurationId" class="control-label"><span class="text-danger">*</span></label>
+                                        <select asp-for="DurationId" class="form-control" asp-items="ViewBag.DurationId" required>
                                             <option value="">-- Select Duration --</option>
                                         </select>
-                                        <span asp-validation-for="DurationId" class="text-danger"></span>
+                                        <span asp-validation-for="DurationId" class="text-danger small"></span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label asp-for="Description" class="control-label"></label>
-                                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
-                                <span asp-validation-for="Description" class="text-danger"></span>
+                                <textarea asp-for="Description" class="form-control" rows="3" placeholder="Additional notes (optional)"></textarea>
+                                <span asp-validation-for="Description" class="text-danger small"></span>
                             </div>
 
                             <!-- Date Validation Error Message -->
-                            <div id="dateErrorAlert" class="alert alert-danger" role="alert" style="display: none;">
-                                End date must be equal to or later than start date.
+                            <div id="dateErrorAlert" class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+                                <strong>Validation Error!</strong> End date must be equal to or later than start date.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                         </div>
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Save Application</button>
-                            <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary btn-block btn-sm" id="submitBtn">
+                                <i class="fas fa-save"></i> Save Application
+                            </button>
+                            <a href="@Url.Action("Index")" class="btn btn-secondary btn-block btn-sm mt-2">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
                         </div>
                     </form>
                 </div>
@@ -123,11 +136,17 @@
             const endDate = document.getElementById('EndDate');
             const numberOfDays = document.getElementById('NumberOfDays');
             const dateErrorAlert = document.getElementById('dateErrorAlert');
-            const form = document.querySelector('form');
+            const successAlert = document.getElementById('successAlert');
+            const form = document.getElementById('leaveApplicationForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const employeeSelect = document.getElementById('EmployeeId');
+            const leaveTypeSelect = document.getElementById('LeaveTypeId');
+            const durationSelect = document.getElementById('DurationId');
 
             function validateDates() {
+                dateErrorAlert.style.display = 'none';
+
                 if (!startDate.value || !endDate.value) {
-                    dateErrorAlert.style.display = 'none';
                     return true;
                 }
 
@@ -136,7 +155,7 @@
 
                 if (end < start) {
                     dateErrorAlert.style.display = 'block';
-                    numberOfDays.value = '';
+                    numberOfDays.value = '0';
                     return false;
                 } else {
                     dateErrorAlert.style.display = 'none';
@@ -146,7 +165,7 @@
 
             function calculateDays() {
                 if (!startDate.value || !endDate.value) {
-                    numberOfDays.value = '';
+                    numberOfDays.value = '0';
                     return;
                 }
 
@@ -154,24 +173,124 @@
                 const end = new Date(endDate.value);
                 const diffTime = end.getTime() - start.getTime();
                 const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
-                numberOfDays.value = diffDays > 0 ? diffDays : '';
+                numberOfDays.value = diffDays > 0 ? diffDays : '0';
             }
 
             function handleDateChange() {
-                validateDates();
                 calculateDays();
+                validateDates();
             }
 
-            // Prevent form submission if dates are invalid
-            form.addEventListener('submit', function (e) {
-                if (!validateDates()) {
-                    e.preventDefault();
-                    dateErrorAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            function validateForm() {
+                let errors = [];
+
+                if (!employeeSelect.value || employeeSelect.value === '') {
+                    errors.push('Employee is required');
                 }
+                if (!leaveTypeSelect.value || leaveTypeSelect.value === '') {
+                    errors.push('Leave Type is required');
+                }
+                if (!startDate.value || startDate.value === '') {
+                    errors.push('Start Date is required');
+                }
+                if (!endDate.value || endDate.value === '') {
+                    errors.push('End Date is required');
+                }
+                if (!durationSelect.value || durationSelect.value === '') {
+                    errors.push('Duration is required');
+                }
+                if (startDate.value && endDate.value) {
+                    const start = new Date(startDate.value);
+                    const end = new Date(endDate.value);
+                    if (end < start) {
+                        errors.push('End date must be equal to or later than start date');
+                    }
+                }
+
+                return errors;
+            }
+
+            // Prevent form submission if validation fails
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                
+                // Always recalculate before submit
+                calculateDays();
+                
+                // Validate all fields
+                const errors = validateForm();
+                
+                if (errors.length > 0) {
+                    console.error('Validation errors:', errors);
+                    alert('Please fix the following errors:\n\n' + errors.join('\n'));
+                    return false;
+                }
+                
+                if (!validateDates()) {
+                    dateErrorAlert.focus();
+                    dateErrorAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    return false;
+                }
+
+                // Ensure NumberOfDays has a valid value
+                if (!numberOfDays.value || numberOfDays.value === '' || parseInt(numberOfDays.value) === 0) {
+                    calculateDays();
+                }
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+
+                // Submit the form
+                console.log('Submitting form with data:', {
+                    EmployeeId: employeeSelect.value,
+                    LeaveTypeId: leaveTypeSelect.value,
+                    StartDate: startDate.value,
+                    EndDate: endDate.value,
+                    DurationId: durationSelect.value,
+                    NumberOfDays: numberOfDays.value,
+                    Description: document.getElementById('Description').value
+                });
+
+                // Use fetch to submit and handle response
+                const formData = new FormData(form);
+                
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    if (response.ok) {
+                        // Success - redirect after delay
+                        setTimeout(() => {
+                            window.location.href = '@Url.Action("Index")';
+                        }, 1000);
+                    } else {
+                        // Error occurred
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fas fa-save"></i> Save Application';
+                        alert('Error: Failed to save application. Status: ' + response.status);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-save"></i> Save Application';
+                    alert('Error: ' + error.message);
+                });
             });
 
+            // Add event listeners for date changes
             startDate.addEventListener('change', handleDateChange);
             endDate.addEventListener('change', handleDateChange);
+            startDate.addEventListener('input', handleDateChange);
+            endDate.addEventListener('input', handleDateChange);
+
+            // Initial calculation
             calculateDays();
         })();
     </script>
